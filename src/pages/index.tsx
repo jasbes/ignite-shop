@@ -1,24 +1,58 @@
-import { HomeContainer, Product } from '@/src/styles/pages/home'
 import Image from 'next/image'
 
-import shirt1 from '../assets/tshirts/1.png'
-import shirt2 from '../assets/tshirts/2.png'
+import { useKeenSlider } from 'keen-slider/react'
+
+import { HomeContainer, Product } from '../styles/pages/home'
+
+import tshirt1 from '../assets/tshirts/1.png'
+import tshirt2 from '../assets/tshirts/2.png'
+import tshirt3 from '../assets/tshirts/3.png'
+
+import 'keen-slider/keen-slider.min.css'
 
 export default function Home() {
+  const [sliderRef] = useKeenSlider({
+    slides: {
+      perView: 3,
+      spacing: 48,
+    },
+  })
+
   return (
-    <HomeContainer>
-      <Product>
-        <Image src={shirt1} width={520} height={480} alt="" />
+    <HomeContainer ref={sliderRef} className="keen-slider">
+      <Product className="keen-slider__slide">
+        <Image src={tshirt1} width={520} height={480} alt="" />
+
         <footer>
-          <strong>T-Shirt 1</strong>
+          <strong>Camiseta X</strong>
           <span>R$ 79,90</span>
         </footer>
       </Product>
-      <Product>
-        <Image src={shirt2} width={520} height={480} alt="" />
+
+      <Product className="keen-slider__slide">
+        <Image src={tshirt2} width={520} height={480} alt="" />
+
         <footer>
-          <strong>T-Shirt 2</strong>
-          <span>R$ 85,90</span>
+          <strong>Camiseta X</strong>
+          <span>R$ 79,90</span>
+        </footer>
+      </Product>
+
+      <Product className="keen-slider__slide">
+        <Image src={tshirt3} width={520} height={480} alt="" />
+
+        <footer>
+          <strong>Camiseta X</strong>
+          <span>R$ 79,90</span>
+        </footer>
+      </Product>
+
+      <Product className="keen-slider__slide">
+        <Image src={tshirt3} width={520} height={480} alt="" />
+
+        <footer>
+          <strong>Camiseta X</strong>
+          <span>R$ 79,90</span>
         </footer>
       </Product>
     </HomeContainer>
